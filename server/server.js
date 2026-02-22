@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const fs = require('fs');
+const path = require('path');
+const { pool } = require('./lib/db');
 
 const authRoutes = require('./routes/auth');
 const groupRoutes = require('./routes/groups');
@@ -43,8 +46,29 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, error: 'Internal server error' });
 });
 
-app.listen(PORT, () => {
-  console.log(`SplitRight API running on port ${PORT}`);
-});
+async function runMigrations() {
+  const sqlPath = path.join(__dirname, 'migrations', '001_init.sql');
+  const sql = fs.readFileSync(sqlPath, 'utf8');
+  const client = await pool.connect();
+  try {
+    await client.query(sql);
+    console.log('Migrations applied successfully');
+  } finally {
+    client.release();
+  }
+}
+
+async function start() {
+  try {
+    await runMigrations();
+  } catch (err) {
+    console.error('Migration error:', err.message);
+  }
+  app.listen(PORT, () => {
+    console.log(`SplitRight API running on port ${PORT}`);
+  });
+}
+
+start();
 
 module.exports = app;
