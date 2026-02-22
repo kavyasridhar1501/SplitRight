@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Background -->
+  <rect width="192" height="192" rx="40" fill="#0d1117"/>
+  <!-- Split icon -->
+  <g transform="translate(48, 48)" stroke="#6b9e78" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Left arrow up-right -->
+    <path d="M16 3h25v25"/>
+    <!-- Right arrow down-left -->
+    <path d="M8 3H3v25"/>
+    <!-- Center path -->
+    <path d="M48 92v-33a16 16 0 0 0-4.7-11.5L3 3"/>
+    <path d="m45 36 24-24"/>
+  </g>
+</svg>

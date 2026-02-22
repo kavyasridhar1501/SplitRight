@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #0d1117;
+  --bg-surface: #161b22;
+  --bg-elevated: #1f2937;
+  --bg-border: #2d3748;
+  --accent-primary: #6b9e78;
+  --accent-soft: #4a7c59;
+  --accent-subtle: #1e3a2a;
+  --accent-glow: rgba(107, 158, 120, 0.125);
+  --positive: #5a9e7a;
+  --negative: #c17b6b;
+  --neutral: #64748b;
+  --warning: #c4a35a;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --radius-input: 10px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px #2d3748;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overscroll-behavior: none;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* Number input no arrows */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Prevent iOS zoom on input focus */
+input, textarea, select {
+  font-size: 16px;
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  .safe-top {
+    padding-top: max(16px, env(safe-area-inset-top));
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-surface rounded-card shadow-card border border-slate-border;
+  }
+  .btn-primary {
+    @apply bg-sage text-white font-medium rounded-btn touch-target flex items-center justify-center transition-all active:bg-sage-soft active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply bg-slate-elevated border border-slate-border text-text-primary font-medium rounded-btn touch-target flex items-center justify-center transition-all active:opacity-70;
+  }
+  .input-field {
+    @apply bg-slate-elevated border border-slate-border rounded-input text-text-primary placeholder-text-muted focus:outline-none focus:border-sage transition-colors w-full px-4 py-3;
+  }
+  .section-header {
+    @apply text-text-secondary text-xs font-medium uppercase tracking-widest;
+  }
+}
