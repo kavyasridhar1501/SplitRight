@@ -1,5 +1,7 @@
 # SplitRight
 
+**Live app: [https://split-right-ecru.vercel.app](https://split-right-ecru.vercel.app)**
+
 A fair expense splitting PWA for college roommates. Mobile-first, native-feel design with a Slate & Sage color system.
 
 ## Tech Stack
