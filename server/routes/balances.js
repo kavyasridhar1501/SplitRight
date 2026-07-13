@@ -46,9 +46,10 @@ router.get('/:id/balances', verifyToken, async (req, res) => {
         ), 0) AS net_balance
        FROM users u
        JOIN group_members gm ON gm.user_id = u.id
-       LEFT JOIN expense_splits es ON es.user_id = u.id
-       LEFT JOIN expenses e ON e.id = es.expense_id AND e.group_id = $1
+       LEFT JOIN expense_splits es ON es.expense_id IN (SELECT id FROM expenses WHERE group_id = $1)
+       LEFT JOIN expenses e ON e.id = es.expense_id
        WHERE gm.group_id = $1
+         AND (es.id IS NULL OR es.user_id = u.id OR e.paid_by = u.id)
        GROUP BY u.id`,
       [req.params.id]
     );

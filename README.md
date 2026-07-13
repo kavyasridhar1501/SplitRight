@@ -107,6 +107,30 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Running Tests
+
+### Backend (Jest + Supertest)
+
+Integration tests run against a real local Postgres database.
+
+```bash
+cd server
+createdb splitright_test   # once, if it doesn't exist
+cp .env.example .env.test  # then point DATABASE_URL at splitright_test
+npm install
+npm run test:coverage
+```
+
+### Frontend (Vitest)
+
+Unit tests cover the pure `lib/` helpers (formatting utils, API client).
+
+```bash
+cd client
+npm install
+npm run test:coverage
+```
+
 ## Environment Variables
 
 ### Backend (`server/.env`)
