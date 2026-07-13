@@ -4,6 +4,15 @@
 
 A fair expense splitting PWA for college roommates. Mobile-first, native-feel design with a Slate & Sage color system.
 
+## Test Coverage
+
+| Suite | Tests | Coverage |
+|-------|-------|----------|
+| Backend (Jest + Supertest, integration) | 56 passing | ~84% lines (routes/middleware/lib) |
+| Frontend (Vitest, unit) | 25 passing | ~99% lines (`src/lib/`) |
+
+Run locally with `npm run test:coverage` in `server/` and `client/` — see [Running Tests](#running-tests). There's no CI pipeline yet, so these numbers reflect the last local run rather than a live badge.
+
 ## Tech Stack
 
 | Layer | Technology |
