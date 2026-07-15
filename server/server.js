@@ -52,7 +52,7 @@ async function runMigrations() {
   const client = await pool.connect();
   try {
     await client.query(sql);
-    console.log('Migrations applied successfully');
+    console.log('migrations applied');
   } finally {
     client.release();
   }
